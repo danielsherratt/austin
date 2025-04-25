@@ -254,3 +254,5 @@ a.link-nochange:hover {
 li {
   margin-left: 30px; /* or use padding-left */
 }
+
+#models, #local, #history {padding-top: 40px;}

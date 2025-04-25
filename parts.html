@@ -68,9 +68,9 @@ $(document).ready(function () {
     });
 	
 
-    // Hide keyboard after 3s of inactivity
+    // Hide keyboard after 7s of inactivity
     let typingTimer;
-    const doneTypingInterval = 3000;
+    const doneTypingInterval = 7000;
 
     $('#searchBar').on('input', function () {
         clearTimeout(typingTimer);

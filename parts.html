@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <title>Parts - Austin Info</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" href="../assets/style.css">
+	
+</head>
+<body>
+<div class="navbar">
+	<span class="menu-icon">&#9776;</span>
+<div class="nav-links">
+		<div class="nav-links">
+        <a class="nav-item" href="index.html">Home</a>
+        <a class="nav-item" href="parts.html">Parts</a>
+		<a class="nav-item" href="events.html">Events</a>
+		<a class="nav-item" href="library.html">Library</a>
+		</div>
+		</div>
+    </div>
+    <div class="banner"></div>
+	
+	<h1><i class="fa fa-music"></i> Austin Parts</h1>
+		
+<main>		
+    <input type="text" id="searchBar" placeholder="Type the part name, area or common SKU">
+	<button id="clearSearch">Clear</button>
+
+    <div id="noResults">No part found <i class="fa fa-meh-o"></i>, please check your spelling</div>
+    <div class="card-container">
+	<button id="backToTop">Back to Top</button>
+
+
+<a class="link-nochange" href="parts/b255-trafficator.html">
+ <div class="card" data-name="7 B255 Trafficator Blinker bulb 6v 3w">
+ <p>Item: 6V 3W Trafficator Bulb</p> 
+ <p>Model: 7</p> 
+ <p>SKU: B255</p>
+
+ </div>
+</a>
+
+</main>
+   <script>
+$(document).ready(function () {
+    // Focus on search bar when page loads
+    $('#searchBar').focus();
+
+    // Search functionality
+    $('#searchBar').on('keyup', function () {
+        var value = $(this).val().toLowerCase();
+        var visibleCards = 0;
+
+        $('.card').each(function () {
+            var match = $(this).data('name').toLowerCase().includes(value);
+            $(this).toggle(match);
+            if (match) visibleCards++;
+        });
+
+        $('#noResults').toggle(visibleCards === 0);
+    });
+	
+
+    // Hide keyboard after 3s of inactivity
+    let typingTimer;
+    const doneTypingInterval = 3000;
+
+    $('#searchBar').on('input', function () {
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(() => $('#searchBar').blur(), doneTypingInterval);
+    }).on('keydown', function () {
+        clearTimeout(typingTimer);
+    });
+
+    // Toggle menu
+    $('.menu-icon').click(function () {
+        $('.nav-links').toggleClass('active');
+    });
+
+    // Clear search bar when clicking clear button
+    $('#clearSearch').click(function () {
+        location.reload();
+    });
+
+    // Show/hide back-to-top button
+    $(window).scroll(function () {
+        $('#backToTop').toggle($(this).scrollTop() > 100);
+    });
+
+    // Scroll to top when button is clicked
+    $('#backToTop').click(function () {
+        $('html, body').animate({ scrollTop: 0 }, 'fast');
+    });
+});
+  </script>
+	
+</body>
+</html>

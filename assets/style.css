@@ -251,4 +251,6 @@ a.link-nochange:hover {
   color: #0077cc;
 }
 
-#learn, #history, #song {padding-top: 40px;}
+li {
+  margin-left: 30px; /* or use padding-left */
+}
